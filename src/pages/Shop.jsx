@@ -5,11 +5,8 @@ import { isProductInStock, getStockDisplayText } from '../utils/inventoryService
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
 
-const CATEGORIES = [
-    'All', 'Air Conditioners', 'Televisions', 'Refrigerators', 'Generators', 'Washing Machines', 'Phones', 'Laptops', 'Audio', 'Gaming', 'Cameras', 'Kitchen'
-];
-
-const BRANDS = ['Samsung', 'LG', 'Sony', 'Panasonic', 'Hisense', 'TCL', 'Midea', 'Royal', 'Scanfrost', 'Thermocool', 'Indesit', 'Binatone'];
+import { listenToBrands, DEFAULT_BRANDS } from '../utils/brandService';
+import { listenToCategories, DEFAULT_CATEGORIES } from '../utils/categoryService';
 
 function pathToCategory(pathname) {
     if (pathname.includes('phones')) return 'Phones';
@@ -24,9 +21,12 @@ export default function Shop() {
     const navigate = useNavigate();
 
     const urlCat = searchParams.get('cat') || searchParams.get('search') ? null : pathToCategory(location.pathname);
-    const initialCat = CATEGORIES.find(c => c.toLowerCase() === (urlCat || '').toLowerCase());
-
-    const [selectedCategories, setSelectedCategories] = useState(initialCat && initialCat !== 'All' ? [initialCat] : []);
+    
+    const [categoriesList, setCategoriesList] = useState([]);
+    const [brandsList, setBrandsList] = useState([]);
+    
+    // We can't synchronously know the initial category match until fetched, but we can set it anyway
+    const [selectedCategories, setSelectedCategories] = useState(urlCat && urlCat !== 'All' ? [urlCat] : []);
     const [selectedBrands, setSelectedBrands] = useState([]);
     const [search, setSearch] = useState(searchParams.get('search') || '');
     const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +41,32 @@ export default function Shop() {
         unlimited_stock: product.unlimited_stock || false,
         is_hidden: product.is_hidden || false
     });
+
+    useEffect(() => {
+        const unsubscribe = listenToCategories((catList) => {
+            if (catList.length === 0) {
+                setCategoriesList(DEFAULT_CATEGORIES.map(c => c.name));
+            } else {
+                const fetchedCats = catList.map(c => c.name);
+                const allCats = new Set([...DEFAULT_CATEGORIES.map(c => c.name), ...fetchedCats]);
+                setCategoriesList(Array.from(allCats));
+            }
+        });
+        return () => unsubscribe();
+    }, []);
+
+    useEffect(() => {
+        const unsubscribe = listenToBrands((brandList) => {
+            if (brandList.length === 0) {
+                setBrandsList(DEFAULT_BRANDS.map(b => b.name));
+            } else {
+                const fetchedBrands = brandList.map(b => b.name);
+                const allBrands = new Set([...DEFAULT_BRANDS.map(b => b.name), ...fetchedBrands]);
+                setBrandsList(Array.from(allBrands).sort());
+            }
+        });
+        return () => unsubscribe();
+    }, []);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -80,9 +106,8 @@ export default function Shop() {
     useEffect(() => {
         const cat = searchParams.get('cat') || pathToCategory(location.pathname);
         if (cat) {
-            const match = CATEGORIES.find(c => c.toLowerCase() === cat.toLowerCase());
-            if (match && match !== 'All') {
-                setSelectedCategories([match]);
+            if (cat !== 'All') {
+                setSelectedCategories([cat]);
             }
             setSearch('');
         }
@@ -162,7 +187,7 @@ export default function Shop() {
                             Categories
                         </div>
                         <div className="space-y-3 mb-8 px-2 max-h-60 overflow-y-auto custom-scrollbar">
-                            {CATEGORIES.filter(c => c !== 'All').map(cat => (
+                            {categoriesList.filter(c => c !== 'All').map(cat => (
                                 <label key={cat} className="flex items-center gap-3 cursor-pointer group">
                                     <div className="relative flex items-center justify-center w-5 h-5 rounded border border-slate-300 group-hover:border-lg-red transition-colors bg-white">
                                         <input 
@@ -188,7 +213,7 @@ export default function Shop() {
                             Brands
                         </div>
                         <div className="space-y-3 px-2 max-h-60 overflow-y-auto custom-scrollbar">
-                            {BRANDS.map(brand => (
+                            {brandsList.map(brand => (
                                 <label key={brand} className="flex items-center gap-3 cursor-pointer group">
                                     <div className="relative flex items-center justify-center w-5 h-5 rounded border border-slate-300 group-hover:border-lg-red transition-colors bg-white">
                                         <input 

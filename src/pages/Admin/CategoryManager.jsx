@@ -15,7 +15,10 @@ export default function CategoryManager() {
         // If no categories in Firestore, show defaults
         setCategories(DEFAULT_CATEGORIES);
       } else {
-        setCategories(cats.sort((a, b) => a.order - b.order));
+        const fetchedNames = cats.map(c => c.name.toLowerCase());
+        const defaultsToAdd = DEFAULT_CATEGORIES.filter(c => !fetchedNames.includes(c.name.toLowerCase()));
+        const merged = [...defaultsToAdd, ...cats];
+        setCategories(merged.sort((a, b) => a.order - b.order));
       }
     });
 

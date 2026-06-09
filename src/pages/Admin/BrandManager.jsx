@@ -15,7 +15,10 @@ export default function BrandManager() {
         // If no brands in Firestore, show defaults
         setBrands(DEFAULT_BRANDS);
       } else {
-        setBrands(brandList.sort((a, b) => a.order - b.order));
+        const fetchedNames = brandList.map(b => b.name.toLowerCase());
+        const defaultsToAdd = DEFAULT_BRANDS.filter(b => !fetchedNames.includes(b.name.toLowerCase()));
+        const merged = [...defaultsToAdd, ...brandList];
+        setBrands(merged.sort((a, b) => a.order - b.order));
       }
     });
 

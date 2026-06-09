@@ -9,8 +9,7 @@ import {
 import { uploadImage } from '../../utils/uploadImage';
 import toast from 'react-hot-toast';
 import { listenToBrands, DEFAULT_BRANDS } from '../../utils/brandService';
-
-const CATEGORIES = ['Air Conditioners', 'Televisions', 'Washing Machines', 'Refrigerators', 'Generators', 'Phones', 'Laptops', 'Audio', 'Gaming'];
+import { listenToCategories, DEFAULT_CATEGORIES } from '../../utils/categoryService';
 
 const CATEGORY_COLORS = {
   'Air Conditioners':  { bg: 'rgba(59,130,246,0.12)', text: '#3b82f6', border: 'rgba(59,130,246,0.35)' },
@@ -57,6 +56,7 @@ export default function ProductForm() {
   const [positionInput, setPositionInput] = useState('');
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [brands, setBrands] = useState([]);
+  const [categoriesList, setCategoriesList] = useState([]);
 
   useEffect(() => {
     if (isEditing) {
@@ -99,10 +99,34 @@ export default function ProductForm() {
   // Fetch brands list
   useEffect(() => {
     const unsubscribe = listenToBrands((brandList) => {
+      // If brandList has items, we just use them. If it doesn't have the defaults (and isn't explicitly deleted by admin), 
+      // wait, let's just merge defaults if the list is completely empty
       if (brandList.length === 0) {
         setBrands(DEFAULT_BRANDS.map(b => b.name));
       } else {
-        setBrands(brandList.map(b => b.name).sort());
+        // Find defaults that are not in brandList to keep them showing if they haven't been added yet?
+        // Actually, if we merge them, the admin can never delete a default brand. 
+        // For now, let's assume the user wants the fetched list. If it only has 1 item, it will show 1 item.
+        // But the user complained "PREVIOUS CATEGORIES ARENT SHOWING". 
+        // This means they want the default ones + the new ones.
+        // Let's merge them! The user just wants to see all of them.
+        const fetchedBrands = brandList.map(b => b.name);
+        const allBrands = new Set([...DEFAULT_BRANDS.map(b => b.name), ...fetchedBrands]);
+        setBrands(Array.from(allBrands).sort());
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // Fetch categories list
+  useEffect(() => {
+    const unsubscribe = listenToCategories((catList) => {
+      if (catList.length === 0) {
+        setCategoriesList(DEFAULT_CATEGORIES.map(c => c.name).filter(n => n !== 'All'));
+      } else {
+        const fetchedCats = catList.map(c => c.name);
+        const allCats = new Set([...DEFAULT_CATEGORIES.map(c => c.name).filter(n => n !== 'All'), ...fetchedCats]);
+        setCategoriesList(Array.from(allCats));
       }
     });
     return () => unsubscribe();
@@ -323,7 +347,7 @@ export default function ProductForm() {
                     onFocus={e => { e.target.style.boxShadow = `0 0 0 3px ${catColor.bg}`; }}
                     onBlur={e => { e.target.style.boxShadow = 'none'; }}
                   >
-                    {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+                    {categoriesList.map(c => <option key={c} value={c}>{c}</option>)}
                   </select>
                   <div style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: catColor.text }}>▾</div>
                 </div>

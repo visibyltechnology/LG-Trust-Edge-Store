@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { collection, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { Link } from 'react-router-dom';
+import { listenToCategories, DEFAULT_CATEGORIES } from '../../utils/categoryService';
 import {
   Edit, Trash2, PlusCircle, Package, Star, Search,
   SlidersHorizontal, Ruler, BadgePercent, ArrowUpDown, Eye, EyeOff, LayoutGrid, List
@@ -143,6 +144,20 @@ export default function ProductManager() {
   const [search, setSearch] = useState('');
   const [filterCat, setFilterCat] = useState('All');
   const [sortBy, setSortBy] = useState('newest');
+  const [categoriesList, setCategoriesList] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = listenToCategories((catList) => {
+      if (catList.length === 0) {
+        setCategoriesList(DEFAULT_CATEGORIES.map(c => c.name));
+      } else {
+        const fetchedCats = catList.map(c => c.name);
+        const allCats = new Set([...DEFAULT_CATEGORIES.map(c => c.name), ...fetchedCats]);
+        setCategoriesList(Array.from(allCats));
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
     const fetchProducts = async () => {
       setLoading(true);
@@ -306,7 +321,7 @@ export default function ProductManager() {
         {/* Categories (Scrollable) */}
         <div className="flex-1 w-full overflow-x-auto scrollbar-hide py-1 flex items-center gap-2 border-l border-r border-slate-100 px-4">
           <SlidersHorizontal size={14} className="text-slate-400 shrink-0 mr-2" />
-          {['All', 'Featured', ...Object.keys(CATEGORY_STYLES)].map(cat => (
+          {['All', 'Featured', ...categoriesList.filter(c => c !== 'All')].map(cat => (
             <button
               key={cat}
               onClick={() => setFilterCat(cat)}
