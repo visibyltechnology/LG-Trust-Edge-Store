@@ -126,9 +126,9 @@ export default function Shop() {
     const filtered = products.filter(p => {
         const matchCat = selectedCategories.length === 0 || selectedCategories.includes(p.category);
         const matchBrand = selectedBrands.length === 0 || selectedBrands.includes(p.brand);
-        const matchSearch = search === '' || 
-                            (p.name || '').toLowerCase().includes(search.toLowerCase()) || 
-                            (p.brand || '').toLowerCase().includes(search.toLowerCase());
+        const searchTerms = search.toLowerCase().trim().split(/\s+/).filter(Boolean);
+        const searchableText = `${p.name || ''} ${p.brand || ''} ${p.category || ''} ${p.description || ''} ${p.tag || ''}`.toLowerCase();
+        const matchSearch = searchTerms.length === 0 || searchTerms.every(term => searchableText.includes(term));
         return matchCat && matchBrand && matchSearch;
     });
 
