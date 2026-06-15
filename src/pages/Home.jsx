@@ -289,7 +289,7 @@ export default function Home() {
             {/* ══════════════════════════════
                 MODERN HERO ISLAND
             ══════════════════════════════ */}
-            <h1 className="sr-only">LG Trust Edge: #1 Online Electronics Store in Nigeria - Buy TVs, ACs, and Appliances</h1>
+            <h1 className="sr-only">LG Trust Edge: #1 Electronics Showroom in Ikorodu - Buy TVs, ACs, and Home Appliances</h1>
             <section className="px-4 py-6 md:px-8 max-w-[1440px] mx-auto relative z-10">
                 <div className="relative bg-lg-dark text-white overflow-hidden h-[480px] md:h-[600px] group rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] md:rounded-[3rem]">
                     {slides.map((slide, index) => (

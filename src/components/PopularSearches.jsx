@@ -108,7 +108,7 @@ export default function PopularSearches() {
                     <h2 className="text-xl font-black text-gray-900 uppercase tracking-tight">Trending Electronics Searches in Nigeria</h2>
                     <p className="text-sm text-gray-500 mt-2 font-medium">Quick links to our most requested products and local deals</p>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
                     {SEARCH_CATEGORIES.map((category, idx) => (
                         <div key={idx}>
@@ -119,7 +119,7 @@ export default function PopularSearches() {
                             <ul className="space-y-2.5">
                                 {category.links.map((link, linkIdx) => (
                                     <li key={linkIdx}>
-                                        <Link 
+                                        <Link
                                             to={`/products?search=${encodeURIComponent(link)}`}
                                             className="text-[13px] text-gray-500 hover:text-lg-dark hover:underline underline-offset-2 transition-all font-medium block leading-snug"
                                         >
@@ -131,10 +131,10 @@ export default function PopularSearches() {
                         </div>
                     ))}
                 </div>
-                
+
                 <div className="mt-12 text-center">
                     <div className="inline-flex items-center justify-center gap-2 bg-gray-50 text-gray-600 text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-full border border-gray-200">
-                        <i className="fas fa-search"></i> 
+                        <i className="fas fa-search"></i>
                         Buy Electronics Online Pay on Delivery
                     </div>
                 </div>

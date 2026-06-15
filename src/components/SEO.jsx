@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 
 export default function SEO({ 
-  title = "LG Trust Edge: #1 Online Electronics Store in Nigeria", 
-  description = "Shop premium authentic TVs, ACs, refrigerators & home appliances at LG Trust Edge. Fast delivery across Lagos and Nigeria. Buy electronics online today!", 
+  title = "LG Trust Edge: #1 Electronics Showroom in Ikorodu & Nigeria", 
+  description = "Shop premium authentic TVs, ACs, refrigerators & home appliances at LG Trust Edge Showroom in Ikorodu. Fast delivery across Lagos and Nigeria.", 
   name = "LG Trust Edge", 
   type = "website",
   image = "https://www.lgtrustedge.com.ng/logo.png",
