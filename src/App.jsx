@@ -22,6 +22,7 @@ const DeliveryPortal = lazy(() => import('./pages/DeliveryPortal'));
 const Notifications  = lazy(() => import('./pages/Notifications'));
 const Terms          = lazy(() => import('./pages/Terms'));
 const PrivacyPolicy  = lazy(() => import('./pages/PrivacyPolicy'));
+const AntiFakeGuide  = lazy(() => import('./pages/AntiFakeGuide'));
 
 // Admin pages
 const AdminLayout      = lazy(() => import('./pages/Admin/AdminLayout'));
@@ -114,6 +115,7 @@ function App() {
           <Route path="/delivery"       element={<DeliveryPortal />} />
           <Route path="/terms"          element={<Terms />} />
           <Route path="/privacy"        element={<PrivacyPolicy />} />
+          <Route path="/anti-fake-guide" element={<AntiFakeGuide />} />
 
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>

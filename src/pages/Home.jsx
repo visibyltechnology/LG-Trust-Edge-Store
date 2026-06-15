@@ -262,15 +262,28 @@ export default function Home() {
                 WHATSAPP FLOATING BUTTON
             ══════════════════════════════ */}
             <a
-                href="https://wa.me/2347080441764?text=Hi%20LG%20Trust%20Edge%2C%20I%20want%20to%20place%20an%20order."
+                href="https://wa.me/2347080441764?text=Hi%20LG%20Trust%20Edge%20Ikorodu%20Showroom%2C%20I%20want%20to%20inquire%20about%20an%20original%20LG%20product."
                 target="_blank"
                 rel="noreferrer"
-                className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300"
+                className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 group"
                 style={{ boxShadow: '0 4px 20px rgba(37,211,102,0.5)' }}
-                title="Chat on WhatsApp"
+                title="Chat with an agent live in our Ikorodu showroom"
             >
+                {/* Tooltip for Desktop */}
+                <div className="absolute right-16 bottom-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-gray-800 text-xs font-bold py-2 px-3 rounded-lg shadow-lg whitespace-nowrap pointer-events-none">
+                    Chat with an agent live in our Ikorodu showroom
+                    <div className="absolute top-1/2 right-[-4px] transform -translate-y-1/2 w-2 h-2 bg-white rotate-45"></div>
+                </div>
                 <i className="fab fa-whatsapp text-3xl"></i>
             </a>
+
+            {/* ══════════════════════════════
+                HYPER-LOCAL DELIVERY BANNER
+            ══════════════════════════════ */}
+            <div className="bg-lg-red text-white text-center py-2 px-4 text-xs font-bold uppercase tracking-widest shadow-md sticky top-0 z-40">
+                <i className="fas fa-truck-fast mr-2"></i>
+                Fast Same-Day Delivery to Ikorodu, Ketu, Odogunyan, and Shagamu Road
+            </div>
 
             {/* ══════════════════════════════
                 MODERN HERO ISLAND

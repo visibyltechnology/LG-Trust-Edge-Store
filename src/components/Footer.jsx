@@ -184,6 +184,7 @@ export default function Footer() {
                             {[
                                 { label: 'Contact Us / Support', to: '#' },
                                 { label: 'Nationwide Delivery Zones', to: '/delivery' },
+                                { label: 'Anti-Fake LG Guide', to: '/anti-fake-guide' },
                             ].map((l, idx) => (
                                 <li key={idx}>
                                     <Link
