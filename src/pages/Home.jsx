@@ -4,6 +4,7 @@ import { collection, query, where, getDocs, limit, doc, getDoc } from 'firebase/
 import { db } from '../firebase';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
+import PopularSearches from '../components/PopularSearches';
 
 /* ─────────────────────────────────────────────────
    DEFAULT DATA
@@ -602,6 +603,7 @@ export default function Home() {
                 </div>
             </div>
 
+            <PopularSearches />
             <Footer />
         </main>
     );
