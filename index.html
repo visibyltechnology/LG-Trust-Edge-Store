@@ -76,6 +76,40 @@
       }
     }
     </script>
+    <!-- WebSite Schema for Sitelinks Search Box -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "LG Trust Edge",
+      "url": "https://www.lgtrustedge.com.ng/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.lgtrustedge.com.ng/shop?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "LG Trust Edge",
+      "url": "https://www.lgtrustedge.com.ng/",
+      "logo": "https://www.lgtrustedge.com.ng/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+2347080441764",
+        "contactType": "customer service",
+        "areaServed": "NG",
+        "availableLanguage": "en"
+      }
+    }
+    </script>
 
     <!-- Korapay Payment -->
     <script src="https://korablobstorage.blob.core.windows.net/modal/korapay.js"></script>

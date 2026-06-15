@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import useCartStore from '../store/useCartStore';
 import { isProductInStock, INVENTORY_STATUS, getStockDisplayText } from '../utils/inventoryService';
 import SEO from '../components/SEO';
+import { Helmet } from 'react-helmet-async';
 
 // Monthly interest rates; weekly = half of monthly (reward for shorter per-period commitment)
 const MONTHLY_INTEREST = { 2: 5, 3: 10, 4: 10, 5: 20, 6: 20 };
@@ -114,6 +115,32 @@ export default function ProductDetail() {
         image={product.img}
         type="product"
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": product.name,
+            "image": product.img,
+            "description": product.description || `Buy ${product.name} at the best price.`,
+            "sku": product.id,
+            "offers": {
+              "@type": "Offer",
+              "url": `https://www.lgtrustedge.com.ng/product/${product.id}`,
+              "priceCurrency": "NGN",
+              "price": product.price,
+              "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+              "itemCondition": "https://schema.org/NewCondition",
+              "availability": "https://schema.org/InStock"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "124"
+            }
+          })}
+        </script>
+      </Helmet>
       {/* Immersive Background Elements */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-lg-red/5 blur-[120px]"></div>

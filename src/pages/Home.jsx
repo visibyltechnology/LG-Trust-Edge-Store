@@ -275,6 +275,7 @@ export default function Home() {
             {/* ══════════════════════════════
                 MODERN HERO ISLAND
             ══════════════════════════════ */}
+            <h1 className="sr-only">LG Trust Edge: #1 Online Electronics Store in Nigeria - Buy TVs, ACs, and Appliances</h1>
             <section className="px-4 py-6 md:px-8 max-w-[1440px] mx-auto relative z-10">
                 <div className="relative bg-lg-dark text-white overflow-hidden h-[480px] md:h-[600px] group rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] md:rounded-[3rem]">
                     {slides.map((slide, index) => (
@@ -382,7 +383,7 @@ export default function Home() {
                             <i className="fas fa-star text-white text-sm"></i>
                             <span className="text-xs text-white font-black uppercase tracking-[0.2em]">Premium Selection</span>
                         </div>
-                        <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight drop-shadow-md">Top Tier Electronics</h2>
+                        <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight drop-shadow-md">Buy Electronics Online in Nigeria</h2>
                         <p className="text-red-100 text-sm font-medium mt-1">Discover the latest in home appliances and smart devices.</p>
                     </div>
                     
@@ -426,7 +427,7 @@ export default function Home() {
                     <div>
                         <div className="text-[10px] text-lg-red font-black uppercase tracking-widest mb-1 animate-fade-in">Browse By Category</div>
                         <h2 className="text-2xl font-display font-black text-lg-dark uppercase tracking-tight section-heading">
-                            Shop Your Favourite Category
+                            Top Electronics & Appliances Categories
                         </h2>
                     </div>
                     <Link
