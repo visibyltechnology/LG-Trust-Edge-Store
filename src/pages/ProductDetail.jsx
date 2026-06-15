@@ -6,6 +6,7 @@ import { db } from '../firebase';
 import Footer from '../components/Footer';
 import useCartStore from '../store/useCartStore';
 import { isProductInStock, INVENTORY_STATUS, getStockDisplayText } from '../utils/inventoryService';
+import SEO from '../components/SEO';
 
 // Monthly interest rates; weekly = half of monthly (reward for shorter per-period commitment)
 const MONTHLY_INTEREST = { 2: 5, 3: 10, 4: 10, 5: 20, 6: 20 };
@@ -107,6 +108,12 @@ export default function ProductDetail() {
 
   return (
     <main className="min-h-screen flex flex-col bg-[#F8FAFC] selection:bg-lg-red selection:text-white">
+      <SEO 
+        title={`${product.name} - Buy Online | LG Trust Edge`}
+        description={`Buy ${product.name} at the best price in Nigeria. ${product.description ? product.description.substring(0, 100).replace(/\n/g, ' ') + '...' : 'Shop authentic electronics at LG Trust Edge.'}`}
+        image={product.img}
+        type="product"
+      />
       {/* Immersive Background Elements */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-lg-red/5 blur-[120px]"></div>

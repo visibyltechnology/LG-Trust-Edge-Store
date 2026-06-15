@@ -6,6 +6,7 @@ import { confirmDelivery, validateDeliveryToken } from '../utils/orderTrackingSe
 import { uploadProofOfDeliveryImage } from '../utils/mediaUploadService';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase';
+import SEO from '../components/SEO';
 
 export default function DeliveryPortal() {
   const [searchParams] = useSearchParams();
@@ -164,12 +165,13 @@ export default function DeliveryPortal() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 font-sans">
+      <SEO title="Rider Delivery Portal | LG Trust Edge" description="Secure rider portal for confirming LG Trust Edge deliveries. Verify OTP and upload proof of delivery." />
       <div className="max-w-md mx-auto">
         
         {/* Branding Header */}
         <div className="text-center mb-8">
           <div className="font-display text-3xl font-black tracking-tighter mb-2">
-            <span className="text-lg-dark">ZEAL</span><span className="text-lg-red">MART</span>
+            <span className="text-lg-dark">LG TRUST</span><span className="text-lg-red"> EDGE</span>
           </div>
           <h1 className="text-sm font-black text-gray-400 uppercase tracking-widest">Rider Portal</h1>
         </div>

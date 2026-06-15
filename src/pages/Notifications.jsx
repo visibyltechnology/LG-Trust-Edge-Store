@@ -12,6 +12,7 @@ import {
 } from '../utils/notificationService';
 import { formatTimestamp } from '../utils/orderStatusHelper';
 import toast from 'react-hot-toast';
+import SEO from '../components/SEO';
 
 const NOTIFICATION_ICON_MAP = {
   [NOTIFICATION_TYPES.PAYMENT_SUCCESS]: '💳',
@@ -227,6 +228,7 @@ function NotificationsPage() {
 
   return (
     <main className="min-h-screen flex flex-col bg-gray-50">
+      <SEO title="Notifications | LG Trust Edge" description="View your latest notifications, order updates, and alerts from LG Trust Edge." />
       <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex-grow">
         {/* Header */}
         <div className="mb-8">

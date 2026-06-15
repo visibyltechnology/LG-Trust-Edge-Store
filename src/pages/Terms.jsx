@@ -1,8 +1,10 @@
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export default function Terms() {
   return (
     <main className="min-h-screen flex flex-col bg-gray-50">
+      <SEO title="Terms & Conditions | LG Trust Edge" description="Read the terms and conditions for using the LG Trust Edge website and purchasing electronics." />
       <div className="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
         {/* Header */}
         <div className="mb-10">

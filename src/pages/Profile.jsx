@@ -8,6 +8,7 @@ import { Package, Clock, CheckCircle, ShoppingBag, Search, ChevronDown, ChevronU
 import toast from 'react-hot-toast';
 import { createPaymentSuccessNotification } from '../utils/notificationService';
 import { uploadImage } from '../utils/uploadImage';
+import SEO from '../components/SEO';
 
 function fmt(n) {
   return '₦' + Math.ceil(n).toLocaleString('en-NG');
@@ -279,6 +280,7 @@ export default function Profile() {
 
   return (
     <main className="min-h-screen flex flex-col bg-gray-50">
+      <SEO title="My Account | LG Trust Edge" description="Manage your LG Trust Edge profile, track orders, and view your payment history." />
       <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
         
         {/* Header */}

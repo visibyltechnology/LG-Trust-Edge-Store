@@ -5,6 +5,7 @@ import { auth } from '../firebase';
 import Footer from '../components/Footer';
 import { Mail, ArrowLeft, CheckCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
+import SEO from '../components/SEO';
 
 export default function ForgotPassword() {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ export default function ForgotPassword() {
   if (emailSent) {
     return (
       <main className="min-h-screen flex flex-col">
+        <SEO title="Check Your Email | LG Trust Edge" description="Check your email for the password reset link from LG Trust Edge." />
         <div className="flex-grow bg-gray-50 flex flex-col items-center justify-center py-16 px-4 text-center">
           <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-md border border-gray-200">
             <CheckCircle size={64} className="text-green-500 mx-auto mb-6" />
@@ -66,6 +68,7 @@ export default function ForgotPassword() {
 
   return (
     <main className="min-h-screen flex flex-col">
+      <SEO title="Forgot Password | LG Trust Edge" description="Reset your LG Trust Edge account password." />
       <div className="flex-grow bg-gray-50 flex items-center justify-center py-16 px-4">
         <div className="w-full max-w-md">
           {/* Logo */}

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { collection, query, where, getDocs, limit, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 /* ─────────────────────────────────────────────────
    DEFAULT DATA
@@ -252,6 +253,10 @@ export default function Home() {
 
     return (
         <main className="bg-gray-50 flex-grow">
+            <SEO 
+                title="LG TRUST EDGE | Best Electronics Store in Ikorodu, Lagos Nigeria" 
+                description="Shop premium home appliances, TVs, ACs, and electronics at LG Trust Edge in Ikorodu. Nationwide delivery and wholesale deals available!" 
+            />
 
             {/* ══════════════════════════════
                 WHATSAPP FLOATING BUTTON

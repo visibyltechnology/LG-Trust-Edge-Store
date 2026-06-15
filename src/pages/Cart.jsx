@@ -18,6 +18,7 @@ import {
 import { nigeriaData } from '../data/locations';
 import { getDeliveryDetails } from '../utils/deliveryPricing';
 import { uploadImage } from '../utils/uploadImage';
+import SEO from '../components/SEO';
 
 
 
@@ -255,6 +256,7 @@ export default function Cart() {
   if (items.length === 0) {
     return (
       <main className="min-h-screen flex flex-col bg-gray-50">
+        <SEO title="Your Shopping Cart | LG Trust Edge" description="Your shopping cart is empty. Shop for premium electronics at LG Trust Edge." />
         <div className="flex-grow flex flex-col items-center justify-center px-4 py-12 text-center">
           <ShoppingBag size={64} className="text-gray-300 mb-6 mx-auto" />
           <h1 className="text-3xl font-display font-black uppercase tracking-wider text-gray-900 mb-4">Your Bag is Empty</h1>
@@ -270,6 +272,7 @@ export default function Cart() {
 
   return (
     <main className="min-h-screen flex flex-col bg-gray-50">
+      <SEO title="Checkout | LG Trust Edge" description="Securely checkout your authentic electronics from LG Trust Edge." />
       <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         <Link to="/products" className="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-lg-red uppercase tracking-wider transition-colors mb-8">
           <ArrowLeft size={16} /> Continue Shopping

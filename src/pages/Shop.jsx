@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { isProductInStock, getStockDisplayText } from '../utils/inventoryService';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
+import SEO from '../components/SEO';
 
 import { listenToBrands, DEFAULT_BRANDS } from '../utils/brandService';
 import { listenToCategories, DEFAULT_CATEGORIES } from '../utils/categoryService';
@@ -138,8 +139,14 @@ export default function Shop() {
     const currentItems = filtered.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(filtered.length / itemsPerPage);
 
+    const currentTitle = search ? `Search results for "${search}" | LG Trust Edge` : selectedCategories.length === 1 ? `Shop ${selectedCategories[0]} | LG Trust Edge` : "Shop Home Appliances & Electronics | LG Trust Edge";
+
     return (
         <main className="bg-[#F8FAFC] flex-grow min-h-screen selection:bg-lg-red selection:text-white flex flex-col">
+            <SEO 
+                title={currentTitle} 
+                description="Browse our vast collection of authentic home appliances, TVs, air conditioners, and more. Enjoy wholesale deals and fast nationwide shipping from LG Trust Edge." 
+            />
             {/* Stunning Page Header */}
             <div className="relative bg-slate-900 pt-16 pb-24 overflow-hidden border-b border-white/10">
                 {/* Abstract Background */}

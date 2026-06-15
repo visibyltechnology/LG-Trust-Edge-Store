@@ -8,6 +8,7 @@ import LegalModal from '../components/LegalModal';
 import { Eye, EyeOff, CheckCircle, X } from 'lucide-react';
 import { sendRegistrationOTPEmail } from '../utils/email';
 import toast from 'react-hot-toast';
+import SEO from '../components/SEO';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -101,6 +102,7 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-lg-red selection:text-white bg-white">
+      <SEO title="Create an Account | Wholesale Deals at LG Trust Edge" description="Register for an LG Trust Edge account to access premium home appliances, fast nationwide shipping, and exclusive wholesale discounts." />
       <main className="flex-1 flex">
         {/* LEFT SIDE: Immersive Brand Hero (Hidden on Mobile) */}
         <div className="hidden lg:flex w-1/2 relative bg-lg-dark overflow-hidden flex-col justify-between p-12">

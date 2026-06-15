@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import toast from 'react-hot-toast';
 import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
+import SEO from '../components/SEO';
 
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
@@ -93,6 +94,7 @@ export default function ResetPassword() {
 
   return (
     <main className="min-h-screen flex flex-col">
+      <SEO title="Reset Password | LG Trust Edge" description="Reset your LG Trust Edge account password securely." />
       <div className="flex-grow bg-gray-50 flex items-center justify-center py-12 px-4">
         <div className="w-full max-w-md">
           

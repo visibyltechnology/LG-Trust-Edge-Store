@@ -6,6 +6,7 @@ import { auth, db } from '../firebase';
 import { Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -64,6 +65,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-lg-red selection:text-white bg-white">
+      <SEO title="Secure Login | LG Trust Edge" description="Login to your LG Trust Edge account to manage orders, view wholesale deals, and track deliveries." />
       <main className="flex-1 flex">
         {/* LEFT SIDE: Immersive Brand Hero (Hidden on Mobile) */}
         <div className="hidden lg:flex w-1/2 relative bg-lg-dark overflow-hidden flex-col justify-between p-12">

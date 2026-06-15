@@ -6,6 +6,7 @@ import { hashOTP, verifyOTPHash } from '../utils/otpService';
 import { sendRegistrationOTPEmail } from '../utils/email';
 import toast from 'react-hot-toast';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export default function VerifyOTP() {
   const [searchParams] = useSearchParams();
@@ -240,6 +241,7 @@ export default function VerifyOTP() {
 
   return (
     <main className="min-h-screen flex flex-col">
+      <SEO title="Verify Your Email | LG Trust Edge" description="Enter your 6-digit verification code to activate your LG Trust Edge account." />
       <div className="flex-grow bg-gray-50 flex items-center justify-center py-12 px-4">
         <div className="w-full max-w-lg">
           
