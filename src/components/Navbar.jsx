@@ -87,9 +87,8 @@ export default function Navbar() {
                     {/* Main Navbar Pill */}
                     <header className="w-full bg-white/90 backdrop-blur-xl border border-gray-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full flex items-center justify-between px-5 md:px-8 py-3.5 transition-all duration-300 hover:shadow-[0_10px_40px_rgb(0,0,0,0.08)]">
                         {/* Logo */}
-                        <Link to="/" className="flex-shrink-0 flex items-baseline group">
-                            <span className="text-lg-red text-2xl md:text-3xl font-black tracking-tighter transition-transform group-hover:scale-105">LG</span>
-                            <span className="text-slate-900 text-xl md:text-2xl ml-1 font-extrabold tracking-tight">TRUST</span>
+                        <Link to="/" className="flex-shrink-0 flex items-center group">
+                            <img src="/logo.png" alt="LG Trust Edge - Electronics Store Ikorodu" className="h-8 md:h-10 w-auto transition-transform group-hover:scale-105" />
                         </Link>
 
                         {/* Desktop Middle Links (Scrollable on smaller screens) */}
@@ -197,9 +196,8 @@ export default function Navbar() {
                     >
                         {/* Drawer Header (Fixed) */}
                         <div className="p-5 pb-4 border-b border-gray-100 flex items-center justify-between flex-shrink-0">
-                            <div className="font-sans font-black tracking-tighter leading-none select-none">
-                                <span className="text-lg-red text-2xl font-extrabold">LG</span>
-                                <span className="text-slate-900 text-xl font-bold ml-1">TRUST</span>
+                            <div className="font-sans font-black tracking-tighter leading-none select-none flex items-center">
+                                <img src="/logo.png" alt="LG Trust Edge" className="h-8 w-auto" />
                             </div>
                             <button onClick={() => setMobileOpen(false)} className="w-8 h-8 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 hover:bg-red-50 hover:text-lg-red transition-colors btn-press">
                                 <i className="fas fa-times text-sm"></i>

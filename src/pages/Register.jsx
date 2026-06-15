@@ -113,9 +113,8 @@ export default function Register() {
         
         {/* Brand Header */}
         <div className="relative z-10">
-          <Link to="/" className="inline-flex items-baseline group">
-            <span className="text-lg-red text-4xl font-black tracking-tighter transition-transform group-hover:scale-105">LG</span>
-            <span className="text-white text-3xl ml-1 font-extrabold tracking-tight">TRUST</span>
+          <Link to="/" className="inline-flex items-center group">
+            <img src="/logo.png" alt="LG Trust Edge" className="h-10 w-auto transition-transform group-hover:scale-105" />
           </Link>
         </div>
 
@@ -155,9 +154,8 @@ export default function Register() {
       <div className="w-full lg:w-1/2 flex flex-col relative overflow-y-auto">
         {/* Mobile Logo (Only shows on small screens) */}
         <div className="lg:hidden p-6 absolute top-0 w-full flex justify-center z-10">
-            <Link to="/" className="inline-flex items-baseline">
-              <span className="text-lg-red text-3xl font-black tracking-tighter">LG</span>
-              <span className="text-slate-900 text-2xl ml-1 font-extrabold tracking-tight">TRUST</span>
+            <Link to="/" className="inline-flex items-center">
+              <img src="/logo.png" alt="LG Trust Edge" className="h-8 w-auto" />
             </Link>
         </div>
 

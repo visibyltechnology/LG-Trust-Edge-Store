@@ -71,9 +71,7 @@ export default function ForgotPassword() {
           {/* Logo */}
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
-              <div className="font-display text-4xl font-black tracking-tighter">
-                <span className="text-lg-dark">ZEAL</span><span className="text-lg-red">MART</span>
-              </div>
+              <img src="/logo.png" alt="LG Trust Edge" className="h-10 w-auto mx-auto" />
             </Link>
             <p className="text-gray-500 text-sm mt-2 font-medium">Marketplace of the Nation</p>
           </div>

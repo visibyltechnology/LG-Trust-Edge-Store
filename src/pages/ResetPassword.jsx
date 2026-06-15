@@ -99,9 +99,7 @@ export default function ResetPassword() {
           {/* Logo */}
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
-              <div className="font-display text-4xl font-black tracking-tighter">
-                <span className="text-lg-dark">LG</span> <span className="text-lg-red">TRUST EDGE</span>
-              </div>
+              <img src="/logo.png" alt="LG Trust Edge" className="h-10 w-auto mx-auto" />
             </Link>
             <p className="text-gray-500 text-sm mt-2 font-medium">Premium Electronics</p>
           </div>

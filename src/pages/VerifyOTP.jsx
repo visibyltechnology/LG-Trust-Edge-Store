@@ -246,9 +246,7 @@ export default function VerifyOTP() {
           {/* Logo */}
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
-              <div className="font-display text-4xl font-black tracking-tighter">
-                <span className="text-lg-red">LG</span><span className="text-slate-900 ml-1">TRUST EDGE</span>
-              </div>
+              <img src="/logo.png" alt="LG Trust Edge" className="h-10 w-auto mx-auto" />
             </Link>
             <p className="text-gray-500 text-sm mt-2 font-medium">Marketplace of the Nation</p>
           </div>
