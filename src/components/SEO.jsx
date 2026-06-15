@@ -6,20 +6,26 @@ export default function SEO({
   name = "LG Trust Edge", 
   type = "website",
   image = "https://www.lgtrustedge.com.ng/logo.png",
-  url = "https://www.lgtrustedge.com.ng/"
+  url = ""
 }) {
+  // Use the provided url or fall back to the current window location (useful for SSR or client-side routing)
+  const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : "https://www.lgtrustedge.com.ng/");
+
   return (
     <Helmet>
       {/* Standard metadata tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
       
+      {/* Canonical URL - Fixes Google Search Console URL conflicts */}
+      <link rel="canonical" href={currentUrl} />
+      
       {/* Open Graph tags for Social Media / WhatsApp sharing */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={currentUrl} />
       <meta property="og:site_name" content={name} />
 
       {/* Twitter tags */}
